@@ -7,10 +7,5 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "functions": {
-    "src/**/*.tsx": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  ]
 }
