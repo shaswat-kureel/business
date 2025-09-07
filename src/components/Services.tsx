@@ -118,23 +118,13 @@ const Services = () => {
   };
 
   return (
-    <section ref={sectionRef} id="services" className="py-12 bg-gradient-to-br from-black via-slate-900 to-black relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-black/30 to-slate-900/50"></div>
-        <div className="absolute top-20 left-20 w-32 h-32 bg-emerald-600/10 rounded-full animate-float blur-xl"></div>
-        <div className="absolute top-40 right-32 w-24 h-24 bg-teal-600/10 rounded-full animate-float animate-delay-300 blur-xl"></div>
-        <div className="absolute bottom-32 left-32 w-20 h-20 bg-blue-600/10 rounded-full animate-float animate-delay-600 blur-xl"></div>
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-emerald-600/8 rounded-full animate-float animate-delay-900 blur-lg"></div>
-        <div className="absolute top-1/3 right-1/4 w-12 h-12 bg-teal-600/8 rounded-full animate-float animate-delay-1200 blur-lg"></div>
-      </div>
-
+    <section ref={sectionRef} id="services" className="py-12 bg-black relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-20">
         {/* Header Section */}
         <div className={`text-center mb-12 transition-all duration-1000 ${
           isVisible ? 'animate-fade-in-up' : 'animate-hidden'
         }`}>
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-600/20 border border-emerald-600/30 text-emerald-400 text-sm font-medium mb-6">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-600/20 text-emerald-400 text-sm font-medium mb-6">
             <span className="w-2 h-2 bg-emerald-400 rounded-full mr-2 animate-pulse"></span>
             Our Expertise
           </div>
@@ -157,7 +147,7 @@ const Services = () => {
         }`}>
           <button
             onClick={toggleAutoScroll}
-            className="inline-flex items-center px-4 py-2 rounded-full bg-slate-800/80 hover:bg-slate-700/90 border border-slate-600/50 text-white/80 hover:text-white transition-all duration-300 backdrop-blur-sm"
+            className="inline-flex items-center px-4 py-2 rounded-full bg-slate-800/80 hover:bg-slate-700/90 text-white/80 hover:text-white transition-all duration-300 backdrop-blur-sm"
           >
             {isAutoScrolling ? (
               <>
@@ -190,7 +180,7 @@ const Services = () => {
                   isVisible ? 'animate-fade-in-up' : 'animate-hidden'
                 }`}
               >
-                <Card className="group h-full bg-gradient-to-br from-black/60 to-slate-900/40 border-slate-700/50 hover:border-slate-600/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 overflow-hidden relative rounded-xl">
+                <Card className="group h-full bg-gradient-to-br from-black/60 to-slate-900/40 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 overflow-hidden relative rounded-xl">
                   {/* Gradient Overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${service.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl`}></div>
                   
@@ -234,7 +224,7 @@ const Services = () => {
           <div 
             onClick={() => {
               const popup = document.createElement('div');
-              popup.className = 'fixed bottom-8 right-8 bg-black/80 backdrop-blur-md border border-slate-700 text-white p-6 rounded-2xl shadow-2xl z-50 transition-all duration-300 ease-out';
+              popup.className = 'fixed bottom-8 right-8 bg-black/80 backdrop-blur-md text-white p-6 rounded-2xl shadow-2xl z-50 transition-all duration-300 ease-out';
               popup.innerHTML = `
                 <div class="text-center">
                   <div class="text-5xl mb-4 text-center">🚀</div>

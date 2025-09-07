@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, ShoppingCart, Star } from "lucide-react";
+import { Loader2, ShoppingCart, Star, CheckCircle, Package } from "lucide-react";
 
 const formSchema = z.object({
   customerName: z.string().min(2, "Name must be at least 2 characters"),
@@ -80,35 +80,33 @@ const OrderForm = ({ product, isOpen, onClose }: OrderFormProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto scrollbar-hide">
+      <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto scrollbar-hide bg-slate-900/80 backdrop-blur-sm border-slate-700/50 text-white">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <ShoppingCart className="w-5 h-5 text-primary" />
-            Order {product.name}
+          <DialogTitle className="flex items-center gap-2 text-2xl font-bold">
+            <ShoppingCart className="w-6 h-6 text-teal-400" />
+            Order Confirmation
           </DialogTitle>
-          <DialogDescription>
-            Fill out the form below to place your order for this template.
+          <DialogDescription className="text-slate-400">
+            Review your order and provide your details to complete the purchase.
           </DialogDescription>
         </DialogHeader>
 
         {/* Product Summary */}
-        <div className="bg-muted/50 rounded-lg p-4 mb-6">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="p-2 bg-primary/10 rounded-lg">
-              {product.icon}
+        <div className="bg-gradient-to-br from-slate-800/50 to-slate-800/30 rounded-lg p-6 my-6 border border-slate-700/50 shadow-lg">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="p-3 bg-gradient-to-br from-teal-500/20 to-blue-500/20 rounded-lg border border-teal-400/30">
+              <Package className="w-8 h-8 text-teal-400" />
             </div>
             <div>
-              <h3 className="font-semibold">{product.name}</h3>
-              <p className="text-sm text-muted-foreground">{product.category}</p>
+              <h3 className="text-xl font-bold text-white">{product.name}</h3>
+              <p className="text-sm text-slate-300">{product.category}</p>
             </div>
           </div>
-          <div className="flex items-center justify-between">
-            <span className="text-2xl font-bold text-primary">₹{product.price.toLocaleString()}</span>
-            {product.originalPrice && (
-              <span className="text-muted-foreground line-through text-sm">
-                ₹{product.originalPrice.toLocaleString()}
-              </span>
-            )}
+          <div className="flex items-end justify-between">
+            <div>
+              <p className="text-sm text-slate-400 mb-1">Total Price</p>
+              <span className="text-4xl font-bold text-teal-400">{product.price}</span>
+            </div>
           </div>
         </div>
 
@@ -119,9 +117,9 @@ const OrderForm = ({ product, isOpen, onClose }: OrderFormProps) => {
               name="customerName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Full Name *</FormLabel>
+                  <FormLabel className="text-slate-300">Full Name *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your full name" {...field} />
+                    <Input placeholder="Your full name" {...field} className="bg-slate-800/50 border-slate-600/50 text-white placeholder:text-slate-400 focus:border-teal-400" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -133,12 +131,13 @@ const OrderForm = ({ product, isOpen, onClose }: OrderFormProps) => {
               name="customerEmail"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email Address *</FormLabel>
+                  <FormLabel className="text-slate-300">Email Address *</FormLabel>
                   <FormControl>
                     <Input 
                       type="email" 
                       placeholder="your.email@example.com" 
                       {...field} 
+                      className="bg-slate-800/50 border-slate-600/50 text-white placeholder:text-slate-400 focus:border-teal-400"
                     />
                   </FormControl>
                   <FormMessage />
@@ -151,12 +150,13 @@ const OrderForm = ({ product, isOpen, onClose }: OrderFormProps) => {
               name="customerPhone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Phone Number (Optional)</FormLabel>
+                  <FormLabel className="text-slate-300">Phone Number (Optional)</FormLabel>
                   <FormControl>
                     <Input 
                       type="tel" 
                       placeholder="+91 9876543210" 
                       {...field} 
+                      className="bg-slate-800/50 border-slate-600/50 text-white placeholder:text-slate-400 focus:border-teal-400"
                     />
                   </FormControl>
                   <FormMessage />
@@ -169,11 +169,11 @@ const OrderForm = ({ product, isOpen, onClose }: OrderFormProps) => {
               name="customizationNotes"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Customization Notes (Optional)</FormLabel>
+                  <FormLabel className="text-slate-300">Customization Notes (Optional)</FormLabel>
                   <FormControl>
                     <Textarea 
                       placeholder="Any specific requirements or customizations you need..."
-                      className="min-h-[100px] resize-none"
+                      className="min-h-[100px] resize-none bg-slate-800/50 border-slate-600/50 text-white placeholder:text-slate-400 focus:border-teal-400"
                       {...field} 
                     />
                   </FormControl>
@@ -182,16 +182,16 @@ const OrderForm = ({ product, isOpen, onClose }: OrderFormProps) => {
               )}
             />
 
-            <div className="bg-primary/5 rounded-lg p-4">
-              <h4 className="font-medium mb-2 flex items-center gap-2">
-                <Star className="w-4 h-4 text-primary" />
-                What's included:
+            <div className="bg-slate-800/30 border border-slate-700/50 rounded-lg p-4">
+              <h4 className="font-medium mb-3 flex items-center gap-2 text-white">
+                <Star className="w-5 h-5 text-yellow-400" />
+                What's Included:
               </h4>
-              <ul className="space-y-1 text-sm text-muted-foreground">
+              <ul className="space-y-2 text-sm text-slate-300">
                 {product.features.map((feature: string, i: number) => (
-                  <li key={i} className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
-                    {feature}
+                  <li key={i} className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-teal-400" />
+                    <span>{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -202,15 +202,14 @@ const OrderForm = ({ product, isOpen, onClose }: OrderFormProps) => {
                 type="button" 
                 variant="outline" 
                 onClick={onClose}
-                className="flex-1"
+                className="flex-1 border-slate-600/50 text-white hover:bg-slate-700/50 hover:border-teal-400"
                 disabled={isSubmitting}
               >
                 Cancel
               </Button>
               <Button 
                 type="submit" 
-                variant="hero"
-                className="flex-1"
+                className="flex-1 bg-gradient-to-r from-teal-400 to-blue-400 hover:from-teal-500 hover:to-blue-500 text-black font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (

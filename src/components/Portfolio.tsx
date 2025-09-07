@@ -158,7 +158,7 @@ const Portfolio = () => {
         <div className={`text-center transition-all duration-1000 ${
           isVisible ? 'animate-fade-in-up' : 'animate-hidden'
         }`}>
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-medium mb-6">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 text-white text-sm font-medium mb-6">
             <span className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></span>
             My Portfolio
           </div>
@@ -182,7 +182,7 @@ const Portfolio = () => {
       }`}>
         <button
           onClick={toggleAutoScroll}
-          className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white hover:text-white transition-all duration-300 backdrop-blur-sm"
+          className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-white transition-all duration-300 backdrop-blur-sm"
         >
           {isAutoScrolling ? (
             <>
@@ -200,7 +200,7 @@ const Portfolio = () => {
 
       {/* Pinterest Style Masonry Grid - Fitted in Rectangle */}
       <div className="container mx-auto px-4">
-        <div ref={containerRef} className="relative h-[800px] overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900/20 backdrop-blur-sm">
+        <div ref={containerRef} className="relative h-[800px] overflow-hidden rounded-2xl bg-slate-900/20 backdrop-blur-sm">
           {/* Gradient Mask for Bottom Cut */}
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-10" />
           
@@ -221,7 +221,7 @@ const Portfolio = () => {
                     animationDelay: `${(index % portfolioItems.length + 1) * 100}ms`
                   }}
                 >
-                  <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden hover:border-slate-600/50 hover:shadow-2xl hover:shadow-slate-900/50 transition-all duration-500">
+                  <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-slate-900/50 transition-all duration-500">
                     {/* Image Container */}
                     <div className={`relative ${item.height} overflow-hidden`}>
                       <img
@@ -244,7 +244,7 @@ const Portfolio = () => {
                       
                       {/* Category Badge */}
                       <div className="absolute top-4 right-4">
-                        <div className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full border border-white/30">
+                        <div className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full">
                           {item.category}
                         </div>
                       </div>
@@ -264,7 +264,7 @@ const Portfolio = () => {
                         {item.tags.map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="px-2 py-1 bg-slate-700/50 text-slate-300 text-xs rounded-md border border-slate-600/50"
+                            className="px-2 py-1 bg-slate-700/50 text-slate-300 text-xs rounded-md"
                           >
                             {tag}
                           </span>

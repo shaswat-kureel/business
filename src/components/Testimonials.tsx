@@ -6,6 +6,7 @@ import { Star, Quote, ArrowRight } from "lucide-react";
 const Testimonials = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
 
   const testimonials = [
     {
@@ -99,33 +100,29 @@ const Testimonials = () => {
       { threshold: 0.1 }
     );
 
-    const element = document.getElementById('testimonials');
+    const element = testimonialsRef.current;
     if (element) {
       observer.observe(element);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      if (element) {
+        observer.unobserve(element);
+      }
+    };
   }, []);
 
   // Create duplicated testimonials for infinite scroll effect
   const scrollTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section id="testimonials" className="py-24 bg-black relative overflow-hidden">
-      {/* Enhanced Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black to-slate-900">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent_50%)]" />
-        <div className="absolute top-20 left-20 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
-      </div>
-
+    <section id="testimonials" ref={testimonialsRef} className="py-24 bg-black relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-20">
         {/* Enhanced Header Section */}
         <div className={`text-center mb-20 transition-all duration-1000 ${
           isVisible ? 'animate-fade-in-up' : 'animate-hidden'
         }`}>
-          <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-white/10 to-white/5 border border-white/20 text-white text-sm font-medium mb-8 backdrop-blur-sm">
+          <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-white/10 to-white/5 text-white text-sm font-medium mb-8 backdrop-blur-sm">
             <span className="w-2 h-2 bg-gradient-to-r from-teal-400 to-blue-400 rounded-full mr-3 animate-pulse"></span>
             Client Success Stories
             <span className="ml-3 px-2 py-1 bg-gradient-to-r from-teal-400/20 to-blue-400/20 rounded-full text-xs">
@@ -166,7 +163,7 @@ const Testimonials = () => {
               {scrollTestimonials.map((testimonial, index) => (
                 <Card 
                   key={index} 
-                  className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/50 hover:shadow-2xl hover:shadow-slate-900/50 transition-all duration-500 hover:-translate-y-2 group cursor-pointer min-w-[380px] max-w-[380px]"
+                  className="bg-slate-800/30 backdrop-blur-sm hover:shadow-2xl hover:shadow-slate-900/50 transition-all duration-500 hover:-translate-y-2 group cursor-pointer min-w-[380px] max-w-[380px]"
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
@@ -182,7 +179,7 @@ const Testimonials = () => {
                     </div>
 
                     {/* Category Badge */}
-                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-teal-400/20 to-blue-400/20 border border-teal-400/30 text-teal-300 text-xs font-medium mb-4 self-start">
+                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-teal-400/20 to-blue-400/20 text-teal-300 text-xs font-medium mb-4 self-start">
                       {testimonial.category}
                     </div>
 
@@ -199,7 +196,7 @@ const Testimonials = () => {
                     </blockquote>
 
                     {/* Project Details */}
-                    <div className="bg-slate-700/30 rounded-lg p-3 mb-4 border border-slate-600/30">
+                    <div className="bg-slate-700/30 rounded-lg p-3 mb-4">
                       <div className="grid grid-cols-3 gap-3 text-center text-xs">
                         <div>
                           <div className="text-slate-400 mb-1">Project</div>
@@ -221,12 +218,12 @@ const Testimonials = () => {
                       <div className="text-slate-400 mb-2 text-xs font-medium">Technologies</div>
                       <div className="flex flex-wrap gap-1">
                         {testimonial.technologies.slice(0, 3).map((tech, i) => (
-                          <span key={i} className="px-2 py-1 bg-gradient-to-r from-teal-400/20 to-blue-400/20 border border-teal-400/30 rounded-full text-teal-300 text-xs">
+                          <span key={i} className={`px-2 py-1 bg-gradient-to-r from-teal-400/20 to-blue-400/20 rounded-full text-teal-300 text-xs`}>
                             {tech}
                           </span>
                         ))}
                         {testimonial.technologies.length > 3 && (
-                          <span className="px-2 py-1 bg-slate-600/50 border border-slate-500/30 rounded-full text-slate-300 text-xs">
+                          <span className="px-2 py-1 bg-slate-600/50 rounded-full text-slate-300 text-xs">
                             +{testimonial.technologies.length - 3}
                           </span>
                         )}

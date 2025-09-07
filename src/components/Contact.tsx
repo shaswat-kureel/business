@@ -131,7 +131,7 @@ const Contact = () => {
         <div className={`text-center mb-12 sm:mb-16 lg:mb-20 transition-all duration-1000 ${
           isVisible ? 'animate-fade-in-up' : 'animate-hidden'
         }`}>
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 text-white text-xs sm:text-sm font-medium mb-4 sm:mb-6">
             <Sparkles className="w-4 h-4 mr-2 text-teal-400" />
             Let's Create Together
           </div>
@@ -151,7 +151,7 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-7xl mx-auto">
           {/* Contact Form */}
-          <Card className={`bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/50 hover:shadow-2xl hover:shadow-slate-900/50 transition-all duration-500 ${
+          <Card className={`bg-slate-800/30 backdrop-blur-sm hover:shadow-2xl hover:shadow-slate-900/50 transition-all duration-500 ${
             isVisible ? 'animate-fade-in-left' : 'animate-hidden'
           }`}>
             <CardHeader className="pb-4 sm:pb-6">
@@ -164,14 +164,14 @@ const Contact = () => {
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
                 {/* Status Messages */}
                 {submitStatus === "success" && (
-                  <div className="flex items-center space-x-3 p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+                  <div className="flex items-center space-x-3 p-4 bg-green-500/10 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-400" />
                     <span className="text-green-400 font-medium break-words">{submitMessage}</span>
                   </div>
                 )}
                 
                 {submitStatus === "error" && (
-                  <div className="flex items-center space-x-3 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+                  <div className="flex items-center space-x-3 p-4 bg-red-500/10 rounded-lg">
                     <AlertCircle className="w-5 h-5 text-red-400" />
                     <span className="text-red-400 font-medium break-words">{submitMessage}</span>
                   </div>
@@ -182,7 +182,7 @@ const Contact = () => {
                     <Input 
                       {...register("name")}
                       placeholder="Your Name *" 
-                      className={`bg-slate-700/50 border-slate-600/50 text-white placeholder:text-slate-400 focus:border-teal-400 ${errors.name ? "border-red-500" : ""}`}
+                      className={`bg-slate-700/50 text-white placeholder:text-slate-400 focus:border-teal-400 ${errors.name ? "border-red-500" : ""}`}
                     />
                     {errors.name && (
                       <p className="text-red-400 text-sm mt-1 break-words">{errors.name.message}</p>
@@ -193,7 +193,7 @@ const Contact = () => {
                       {...register("email")}
                       placeholder="Your Email *" 
                       type="email" 
-                      className={`bg-slate-700/50 border-slate-600/50 text-white placeholder:text-slate-400 focus:border-teal-400 ${errors.email ? "border-red-500" : ""}`}
+                      className={`bg-slate-700/50 text-white placeholder:text-slate-400 focus:border-teal-400 ${errors.email ? "border-red-500" : ""}`}
                     />
                     {errors.email && (
                       <p className="text-red-400 text-sm mt-1 break-words">{errors.email.message}</p>
@@ -206,7 +206,7 @@ const Contact = () => {
                     <Input 
                       {...register("company")}
                       placeholder="Company Name (Optional)" 
-                      className="bg-slate-700/50 border-slate-600/50 text-white placeholder:text-slate-400 focus:border-teal-400"
+                      className="bg-slate-700/50 text-white placeholder:text-slate-400 focus:border-teal-400"
                     />
                   </div>
                   <div>
@@ -214,7 +214,7 @@ const Contact = () => {
                       {...register("phone")}
                       placeholder="Phone Number (Optional)" 
                       type="tel"
-                      className="bg-slate-700/50 border-slate-600/50 text-white placeholder:text-slate-400 focus:border-teal-400"
+                      className="bg-slate-700/50 text-white placeholder:text-slate-400 focus:border-teal-400"
                     />
                   </div>
                 </div>
@@ -223,7 +223,7 @@ const Contact = () => {
                   <label className="block text-sm font-medium mb-2 text-white">Project Type *</label>
                   <select 
                     {...register("project_type")}
-                    className={`w-full p-3 border rounded-lg bg-slate-700/50 text-white border-slate-600/50 focus:border-teal-400 ${errors.project_type ? "border-red-500" : ""}`}
+                    className={`w-full p-3 rounded-lg bg-slate-700/50 text-white focus:border-teal-400 ${errors.project_type ? "border-red-500" : ""}`}
                   >
                     <option value="">Select project type</option>
                     <option value="website">Website</option>
@@ -242,7 +242,7 @@ const Contact = () => {
                     <label className="block text-sm font-medium mb-2 text-white">Budget Range *</label>
                     <select 
                       {...register("budget_range")}
-                      className={`w-full p-3 border rounded-lg bg-slate-700/50 text-white border-slate-600/50 focus:border-teal-400 ${errors.budget_range ? "border-red-500" : ""}`}
+                      className={`w-full p-3 rounded-lg bg-slate-700/50 text-white focus:border-teal-400 ${errors.budget_range ? "border-red-500" : ""}`}
                     >
                       <option value="">Select budget</option>
                       <option value="Rs 0 - 1000">Rs 0 - 1000</option>
@@ -259,7 +259,7 @@ const Contact = () => {
                     <label className="block text-sm font-medium mb-2 text-white">Timeline *</label>
                     <select 
                       {...register("timeline")}
-                      className={`w-full p-3 border rounded-lg bg-slate-700/50 text-white border-slate-600/50 focus:border-teal-400 ${errors.timeline ? "border-red-500" : ""}`}
+                      className={`w-full p-3 rounded-lg bg-slate-700/50 text-white focus:border-teal-400 ${errors.timeline ? "border-red-500" : ""}`}
                     >
                       <option value="">Select timeline</option>
                       <option value="1-2 weeks">1-2 weeks</option>
@@ -278,7 +278,7 @@ const Contact = () => {
                   <Textarea 
                     {...register("description")}
                     placeholder="Tell me about your project... *" 
-                    className={`min-h-32 bg-slate-700/50 border-slate-600/50 text-white placeholder:text-slate-400 focus:border-teal-400 ${errors.description ? "border-red-500" : ""}`}
+                    className={`min-h-32 bg-slate-700/50 text-white placeholder:text-slate-400 focus:border-teal-400 ${errors.description ? "border-red-500" : ""}`}
                   />
                   {errors.description && (
                     <p className="text-red-400 text-sm mt-1 break-words">{errors.description.message}</p>
@@ -289,7 +289,7 @@ const Contact = () => {
                   <label className="block text-sm font-medium mb-2 text-white">Preferred Contact Method</label>
                   <select 
                     {...register("contact_preference")}
-                    className="w-full p-3 border rounded-lg bg-slate-700/50 text-white border-slate-600/50 focus:border-teal-400"
+                    className="w-full p-3 rounded-lg bg-slate-700/50 text-white focus:border-teal-400"
                   >
                     <option value="email">Email</option>
                     <option value="phone">Phone</option>
@@ -324,7 +324,7 @@ const Contact = () => {
             isVisible ? 'animate-fade-in-right' : 'animate-hidden'
           }`}>
             {/* Profile Card */}
-            <Card className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 hover:border-slate-600/50 hover:shadow-2xl hover:shadow-slate-900/50 transition-all duration-500">
+            <Card className="bg-slate-800/30 backdrop-blur-sm hover:shadow-2xl hover:shadow-slate-900/50 transition-all duration-500">
               <CardContent className="p-6 sm:p-8">
                 <div className="flex items-center space-x-4 sm:space-x-6 mb-6 sm:mb-8">
                   <div className="relative">
@@ -345,19 +345,19 @@ const Contact = () => {
                 </div>
                 
                 <div className="space-y-3 sm:space-y-4">
-                  <div className="flex items-center space-x-3 sm:space-x-4 p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                  <div className="flex items-center space-x-3 sm:space-x-4 p-3 bg-slate-700/30 rounded-lg">
                     <MapPin className="w-5 h-5 text-teal-400" />
                     <span className="text-white">India (Remote Worldwide)</span>
                   </div>
-                  <div className="flex items-center space-x-3 sm:space-x-4 p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                  <div className="flex items-center space-x-3 sm:space-x-4 p-3 bg-slate-700/30 rounded-lg">
                     <Mail className="w-5 h-5 text-teal-400" />
                     <span className="text-white break-words">shaswat-developer@gmail.com</span>
                   </div>
-                  <div className="flex items-center space-x-3 sm:space-x-4 p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                  <div className="flex items-center space-x-3 sm:space-x-4 p-3 bg-slate-700/30 rounded-lg">
                     <Phone className="w-5 h-5 text-teal-400" />
                     <span className="text-white">+91 (Available on request)</span>
                   </div>
-                  <div className="flex items-center space-x-3 sm:space-x-4 p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                  <div className="flex items-center space-x-3 sm:space-x-4 p-3 bg-slate-700/30 rounded-lg">
                     <Calendar className="w-5 h-5 text-teal-400" />
                     <span className="text-white">Usually responds in 2-4 hours</span>
                   </div>
@@ -365,15 +365,15 @@ const Contact = () => {
 
                 {/* Social buttons responsive grid */}
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-                  <Button variant="outline" size="lg" className="w-full bg-slate-700/30 border-slate-600/50 text-white hover:bg-slate-600/50 hover:border-teal-400">
+                  <Button variant="outline" size="lg" className="w-full bg-slate-700/30 text-white hover:bg-slate-600/50">
                     <Github className="w-4 h-4 mr-2" />
                     GitHub
                   </Button>
-                  <Button variant="outline" size="lg" className="w-full bg-slate-700/30 border-slate-600/50 text-white hover:bg-slate-600/50 hover:border-teal-400">
+                  <Button variant="outline" size="lg" className="w-full bg-slate-700/30 text-white hover:bg-slate-600/50">
                     <Linkedin className="w-4 h-4 mr-2" />
                     LinkedIn
                   </Button>
-                  <Button variant="outline" size="lg" className="w-full bg-slate-700/30 border-slate-600/50 text-white hover:bg-slate-600/50 hover:border-teal-400">
+                  <Button variant="outline" size="lg" className="w-full bg-slate-700/30 text-white hover:bg-slate-600/50">
                     <Twitter className="w-4 h-4 mr-2" />
                     Twitter
                   </Button>
@@ -382,7 +382,7 @@ const Contact = () => {
             </Card>
 
             {/* Current Availability Info */}
-            <Card className="bg-gradient-to-r from-teal-400/10 to-blue-400/10 border border-teal-400/20">
+            <Card className="bg-gradient-to-r from-teal-400/10 to-blue-400/10">
               <CardContent className="p-6">
                 <h4 className="font-semibold mb-4 flex items-center text-white text-lg">
                   <Calendar className="w-6 h-6 text-teal-400 mr-3" />

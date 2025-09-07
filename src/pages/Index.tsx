@@ -4,18 +4,16 @@ import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black text-white">
       <Navbar />
       <Hero />
       <Services />
       <Portfolio />
       <Testimonials />
       <Contact />
-      <Footer />
     </div>
   );
 };

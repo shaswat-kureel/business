@@ -5,7 +5,7 @@ import { ArrowRight, Mouse } from "lucide-react";
 // A reusable component for the browser window mockup
 const BrowserMockup = ({ rotation, position, delay, isVisible }) => (
   <div
-    className="absolute w-[60%] h-[60%] rounded-lg bg-slate-900/80 backdrop-blur-sm border border-slate-700 shadow-2xl shadow-indigo-900/50 transition-all duration-700 ease-out"
+    className="absolute w-[60%] h-[60%] rounded-lg bg-slate-900/80 backdrop-blur-sm shadow-2xl shadow-indigo-900/50 transition-all duration-700 ease-out"
     style={{
       transform: `rotateY(-35deg) rotateX(15deg) ${rotation}`,
       ...position,
@@ -67,15 +67,6 @@ const Hero = () => {
 
   return (
     <div className="relative flex items-center justify-center min-h-screen overflow-hidden bg-black text-white font-sans">
-      {/* Interactive Spotlight Effect */}
-      <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_farthest-side_at_var(--mouse-x)_var(--mouse-y),_rgba(124,58,237,0.1),_transparent_80%)]" />
-
-      {/* Static Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="absolute -translate-x-[20rem] -translate-y-[10rem] w-[50rem] h-[50rem] bg-indigo-600/10 rounded-full blur-3xl" />
-        <div className="absolute translate-x-[20rem] translate-y-[10rem] w-[40rem] h-[40rem] bg-purple-600/10 rounded-full blur-3xl" />
-      </div>
-
       <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2 items-center w-full max-w-7xl px-8">
         {/* Left Side: Content */}
         <div className="text-center lg:text-left">
@@ -112,8 +103,7 @@ Focus on vibes, not deadlines.
             </Button>
             <Button
               size="lg"
-              variant="outline"
-              className="bg-slate-900/50 hover:bg-slate-800/50 border-slate-700 text-white font-bold h-12 px-6 rounded-full transition-transform hover:scale-105"
+              className="bg-slate-900/50 hover:bg-slate-800/50 text-white font-bold h-12 px-6 rounded-full transition-transform hover:scale-105"
             >
               Deep Dive
             </Button>
